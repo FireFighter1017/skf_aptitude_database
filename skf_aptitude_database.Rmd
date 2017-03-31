@@ -1,0 +1,63 @@
+---
+title: "SKF_Aptitude_Database_Notes"
+author: "Pascal Bellerose"
+date: "March 31, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Database description
+
+The database is an MS SQL database used primarily for Vibration Analysis of rotating equipment.
+The concepts explained here are related to the following:
+
+- Vibration data collection routes
+- Vibration measurement points specifications
+- Equipment Hierarchy
+- Microlog Inspector Routes
+- Vibration and Inspector measurements
+
+
+ROUTES
+=========
+
+Routes are list of points that need to be collected using a portable device.
+
+## Tables
+
+  `ROUTEHDR` : General route specific information
+  
+  `TREEELEM` : Hierarchical elements.  Contains all route points, machine, groups and hierarchies
+                   It also holds the route names and alert indices.  
+                   Must be merged on `ROUTEHDR` on fields `TREEELEMID` and `ELEMENTID`.  
+                   Must filter on field ```HIERARCHYTYPE=2``` which means it is a route.
+  
+  Route Header Info:  
+
+      select 
+      	tableset.tblsetname, 
+      	Treeelem.NAME,
+      	convert(DATETIME, substring(routehdr.NEXTSCHEDULE,1,8)) as NEXTSCHED, 
+      	ROUTEHDR.SCHEDULE/86400 FREQUENCE,
+      	convert(DATETIME, substring(ROUTEHDR.LASTUPLOADED,1,8)) as LASTUPLOAD,
+      	convert(DATETIME, substring(ROUTEHDR.LASTDOWNLOADED,1,8)) as LASTDOWNLOAD
+      	
+      From 
+      	ROUTEHDR 
+      	join treeelem on treeelemid=elementid
+      	join tableset on tableset.tblsetid = ROUTEHDR.tblsetid  
+
+  Route Points General Information  :  
+  
+      Select 
+      	* 
+      from 
+      	treeelem 
+      where 
+      	treeelem.hierarchytype = 2 
+      	and containertype=4
+  
+  
