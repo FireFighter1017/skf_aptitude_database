@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mssql_ms-15b9182f48a-c74d26156014e7" provider="generic" driver="mssql_ms" name="SKF VA CEC Niagara Falls" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="db_skf_103.sql.norampac.com" port="1433" server="" database="skfuser" url="jdbc:sqlserver://db_skf_103.sql.norampac.com:1433;databaseName=skfuser" user="skfuser1" password="EAlmwQ==" type="prod">
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="port" value="22"/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<bootstrap autocommit="false"/>
+		</connection>
+		<filters>
+			<filter type="org.jkiss.dbeaver.model.struct.rdb.DBSSchema">
+				<include name="skfuser1"/>
+			</filter>
+		</filters>
+	</data-source>
+	<data-source id="mssql_ms-15b91830bf5-ee8dbb8dd1acb2" provider="generic" driver="mssql_ms" name="SKF VA Kingsey Falls" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="skfuser.sql.cascades.com" port="1433" server="" database="skfuser" url="jdbc:sqlserver://skfuser.sql.cascades.com:1433;databaseName=skfuser" user="skfuser1" password="EAlmwQ==" type="dev">
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="port" value="22"/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+		</connection>
+	</data-source>
+	<data-source id="mssql_ms-15baadaf9e2-4dca09d3c32775cc" provider="generic" driver="mssql_ms" name="SKF Microlog Inspector" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="skfuser2.sql.cascades.com" port="1433" server="" database="skfuser" url="jdbc:sqlserver://skfuser2.sql.cascades.com:1433;databaseName=skfuser" user="skfuser1" password="EAlmwQ==" type="dev">
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="authType" value="PASSWORD"/>
+				<property name="port" value="22"/>
+			</network-handler>
+		</connection>
+	</data-source>
+</data-sources>

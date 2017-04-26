@@ -1,5 +1,6 @@
 library(RODBC)
 library(dplyr)
+library(readr)
 
 
 ##===========
@@ -34,29 +35,25 @@ cx <- odbcDriverConnect(paste("driver={SQL Server};",
 sqlcmd <- read_file("RTEHDR.sql")
 t_rtehdr <- sqlQuery(cx, sqlcmd)
 
-## -- GET POINTS FROM HIERARCHY --
-sqlcmd <- read_file("HIERARCHY_POINTS.sql")
-t_elem <- sqlQuery(cx, sqlcmd)
-
 ## -- GET POINTS FROM ROUTE -- 
 sqlcmd <- read_file("ROUTE_POINTS.sql")
 t_rtepts <- sqlQuery(cx, sqlcmd)
 
-## -- GET ROUTE HISTORY --
-sqlcmd <- read_file("ROUTEHISTORY.sql")
-t_rtehst <- sqlQuery(cx, sqlcmd)
+## Build Route Structure
+output <- inner_join(t_rtehdr, t_rtepts)
 
-## -- GROUP HISTORY BY ROUTE --
-by_id = aggregate(t_rtehst, list(t_rtehst$ROUTEID), sum)
+## -- GET POINTS FREQUENCIES -- 
+sqlcmd <- read_file("POINT_FREQUENCIES.sql")
+t_freq <- sqlQuery(cx, sqlcmd)
 
+###   Rename POINT as a REFERENCe POINT
+colnames(t_freq)[4] = "REF_POINT"
 
-t_routes <- inner_join(t_rtehdr, t_elem[t_elem$CONTAINERTYPE == CT_ROUTE], by.x="ELEMENTID", by.y="TREEELEMID")
+## Link frequencies to route points
+output = inner_join(output, t_freq)
 
-image = sqlQuery(cx, "select readingheader from measreading where pointid=10013 and readingid=1236309", rows_at_time = 1)
-load.image(image)
+write.csv2(output, "output.csv", row.names=FALSE)
 
-## Filter on Backup Extinguishers routes
-rte_res <- tbl_df(t_routes$NAME[grepl("0004$", t_routes$NAME)])
-
-sqlcmd <- "select * From RTEHISTORY"
-t_rtehdr <- sqlQuery(cx, sqlcmd)
+## -- GET TREE --
+sqlcmd <- read_file("TREE_STRUCTURE.sql")
+t_struct <- sqlQuery(cx, sqlcmd)

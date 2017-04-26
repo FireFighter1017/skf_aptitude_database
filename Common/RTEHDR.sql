@@ -1,7 +1,6 @@
--- ROUTES DESCRIPTION
--- excludes points and history
-
+CREATE VIEW cas_rtehdr AS (
 select 
+	ROUTEHDR.ELEMENTID ROUTEID,
 	tableset.tblsetname, 
 	Treeelem.NAME,
 	convert(DATETIME, substring(routehdr.NEXTSCHEDULE,1,8)) as NEXTSCHED, 
@@ -14,3 +13,4 @@ From
 	join treeelem on treeelemid=elementid
 	join tableset on tableset.tblsetid = ROUTEHDR.tblsetid
 		
+)
