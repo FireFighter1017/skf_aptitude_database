@@ -1,3 +1,4 @@
+Created
 Select
 	t.name,
 	p.valuestring,
@@ -11,8 +12,6 @@ From
 		on treeelemid=elementid 
 			and t.containertype=4 
 			and t.hierarchytype=1
-
-			where p.pointid=10013
 			
 /* Valuestrings:
 	

@@ -30,8 +30,9 @@
 			</network-handler>
 		</connection>
 	</data-source>
-	<data-source id="mssql_ms-15baadaf9e2-4dca09d3c32775cc" provider="generic" driver="mssql_ms" name="SKF Microlog Inspector" save-password="true" show-system-objects="true" read-only="false">
+	<data-source id="mssql_ms-15baadaf9e2-4dca09d3c32775cc" provider="generic" driver="mssql_ms" name="SKF Microlog Inspector" save-password="true" show-system-objects="true" show-util-objects="true" read-only="false">
 		<connection host="skfuser2.sql.cascades.com" port="1433" server="" database="skfuser" url="jdbc:sqlserver://skfuser2.sql.cascades.com:1433;databaseName=skfuser" user="skfuser1" password="EAlmwQ==" type="dev">
+			<property name="databaseName" value="skfuser"/>
 			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
 				<property name="socks-port" value="1080"/>
 			</network-handler>
@@ -41,5 +42,6 @@
 				<property name="port" value="22"/>
 			</network-handler>
 		</connection>
+		<custom-property name="resultset.maxrows" value="-1"/>
 	</data-source>
 </data-sources>

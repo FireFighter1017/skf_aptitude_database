@@ -1,0 +1,1 @@
+Select cas_GetMeasAlarmStatus(p.POINTID), h.*, p.* from cas.rtehis h join cas_rtepts p on p.ROUTEID=h.ROUTEID
