@@ -30,19 +30,10 @@ cx <- odbcDriverConnect(paste("driver={SQL Server};",
                               "uid=skfuser1;",
                               "pwd=cm", sep=""))
 
-## -- GET ROUTE HEADERS --
-sqlcmd <- paste("select routeid, ",
-                "year(skfuser1.to_date(enddts)) Annee, ",
-                "month(skfuser1.TO_DATE(enddts)) Mois, ",
-                "avg(duration) From routehistory ",
-                "where routeid in (",
-                "select routeid from routehistory ",
-                "where startdts = '00010101000000') ",
-                "and startdts<>'00010101000000' ", 
-                "group by routeid, ",
-                "year(skfuser1.to_date(enddts)), ",
-                "month(skfuser1.TO_DATE(enddts))",
-                sep="")
+## -- GET ROUTE HISTORY --
+sqlcmd <- "select * From routehistory "
 t_rtehdr <- sqlQuery(cx, sqlcmd)
 
-
+## -- GET ROUTE HISTORY --
+sqlcmd <- "select * From operator "
+t_oper <- sqlQuery(cx, sqlcmd)
