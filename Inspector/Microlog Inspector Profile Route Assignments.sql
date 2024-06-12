@@ -5,4 +5,3 @@ where ProfileId=30  -- Get from table AnaDeviceProfil column ProfileId
 Order by DownloadOrder
 
 ;
-Select * from cas_rtepts where REFPOINT=9750770

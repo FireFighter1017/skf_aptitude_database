@@ -1,0 +1,26 @@
+ 		Insert into cas_measStatus
+		select [plantName]
+			  ,[routeName]
+			  ,[machineDescription]
+			  ,[machineName]
+			  ,[pointCategory]
+			  ,[OPERATOR_GROUP]
+			  ,[OPERATOR_NAME]
+			  ,[pointid]
+			  ,[pointName]
+			  ,[pointDescription]
+			  ,[rankInRoute]
+			  ,[rtepointid]
+			  ,[routeStart]
+			  ,[routeEnd]
+			  ,[routeUpload]
+			  ,[pctcomplete]
+			  ,[measId]
+			  ,[MeasStatus]
+			  ,[MeasGravity]
+			  ,[measMonth]
+			  ,[measWeek]
+			  ,[measYear] 
+		from cas_AllMeasStatus
+		where 
+			operator_name in ('REMY BEAUDET','WILLIAM RANDLETT') 

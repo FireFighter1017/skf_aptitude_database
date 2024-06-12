@@ -1,0 +1,68 @@
+{
+	"folders": {},
+	"connections": {
+		"mssql_ms-15b91830bf5-ee8dbb8dd1acb2": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "SKF VA Kingsey Falls",
+			"save-password": true,
+			"show-system-objects": true,
+			"configuration": {
+				"host": "skfuser.sql.cascades.com",
+				"port": "1433",
+				"database": "skfuser",
+				"url": "jdbc:sqlserver://skfuser.sql.cascades.com:1433;databaseName\u003dskfuser",
+				"configurationType": "MANUAL",
+				"type": "dev"
+			}
+		},
+		"mssql_ms-15baadaf9e2-4dca09d3c32775cc": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "SKF Microlog Inspector",
+			"save-password": true,
+			"show-system-objects": true,
+			"configuration": {
+				"host": "skfuser2.sql.cascades.com",
+				"port": "1433",
+				"database": "skfuser",
+				"url": "jdbc:sqlserver://skfuser2.sql.cascades.com:1433;databaseName\u003dskfuser",
+				"configurationType": "MANUAL",
+				"type": "dev"
+			}
+		},
+		"microsoft-18d7aa2f139-193748619b08f6a8": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "GuideTI_045",
+			"save-password": true,
+			"configuration": {
+				"host": "db_guideti_045.sql.cascades.com",
+				"port": "1433",
+				"database": "GuideTI_045",
+				"url": "jdbc:sqlserver://;serverName\u003ddb_guideti_045.sql.cascades.com;databaseName\u003dGuideTI_045",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_windows"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		}
+	}
+}
