@@ -1,18 +1,21 @@
 Select
 	t.name,
+	p.fieldid,
 	p.valuestring,
 	p.datatype,
-	r.*
+	r.SIGNATURE ParameterName,
+	r.[TYPE] 
 From 
 	point p 
 	join registration r 
-		on registrationid=fieldid 
+		on r.registrationid=p.fieldid 
 	join treeelem t 
-		on treeelemid=elementid 
+		on t.treeelemid=p.elementid 
 			and t.containertype=4 
 			and t.hierarchytype=1
 
-			where p.pointid=10013
+where t.name='IEXT001-LIEU'
+
 			
 /* Valuestrings:
 	

@@ -13,7 +13,8 @@
 				"database": "skfuser",
 				"url": "jdbc:sqlserver://skfuser.sql.cascades.com:1433;databaseName\u003dskfuser",
 				"configurationType": "MANUAL",
-				"type": "dev"
+				"type": "dev",
+				"closeIdleConnection": false
 			}
 		},
 		"mssql_ms-15baadaf9e2-4dca09d3c32775cc": {
@@ -28,7 +29,8 @@
 				"database": "skfuser",
 				"url": "jdbc:sqlserver://skfuser2.sql.cascades.com:1433;databaseName\u003dskfuser",
 				"configurationType": "MANUAL",
-				"type": "dev"
+				"type": "dev",
+				"closeIdleConnection": false
 			}
 		},
 		"microsoft-18d7aa2f139-193748619b08f6a8": {
@@ -43,11 +45,32 @@
 				"url": "jdbc:sqlserver://;serverName\u003ddb_guideti_045.sql.cascades.com;databaseName\u003dGuideTI_045",
 				"configurationType": "MANUAL",
 				"type": "dev",
+				"closeIdleConnection": false,
 				"provider-properties": {
 					"@dbeaver-show-all-schemas@": "false",
 					"sslTrustServerCertificate": "false"
 				},
 				"auth-model": "sqlserver_windows"
+			}
+		},
+		"microsoft-190121c4221-2bd098907f631cc": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "skfuser1",
+			"save-password": true,
+			"configuration": {
+				"host": "skfuser2.sql.cascades.com",
+				"port": "1433",
+				"database": "skfuser",
+				"url": "jdbc:sqlserver://;serverName\u003dskfuser2.sql.cascades.com;databaseName\u003dskfuser",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_database"
 			}
 		}
 	},
@@ -62,7 +85,9 @@
 			"smart-commit": false,
 			"smart-commit-recover": false,
 			"auto-close-transactions": true,
-			"close-transactions-period": 1800
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
 		}
 	}
 }
